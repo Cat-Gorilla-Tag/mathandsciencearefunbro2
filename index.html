@@ -1,0 +1,1278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Tuff HTML Loader v1.0.0</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+
+            font-family: Arial, Helvetica, sans-serif;
+
+            color: white;
+
+            background:
+                radial-gradient(
+                    circle at top,
+                    #202840 0%,
+                    #0b0e16 50%,
+                    #05060a 100%
+                );
+        }
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        header {
+            padding: 60px 20px 45px;
+            text-align: center;
+        }
+
+        .logo {
+            width: 95px;
+            height: 95px;
+
+            margin: 0 auto 22px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 22px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #5865f2,
+                    #7c3aed
+                );
+
+            font-size: 45px;
+
+            box-shadow:
+                0 15px 40px
+                rgba(88, 101, 242, 0.35);
+        }
+
+        header h1 {
+            margin: 0;
+
+            font-size: 44px;
+        }
+
+        .subtitle {
+            max-width: 650px;
+
+            margin: 16px auto 0;
+
+            color: #aeb5c5;
+
+            line-height: 1.6;
+
+            font-size: 17px;
+        }
+
+        /* =========================
+           MAIN
+        ========================= */
+
+        .container {
+            width: min(1100px, 92%);
+
+            margin: 0 auto;
+        }
+
+        /* =========================
+           SEARCH
+        ========================= */
+
+        .search {
+            margin-bottom: 30px;
+        }
+
+        .search input {
+            width: 100%;
+
+            padding: 17px 18px;
+
+            border:
+                1px solid
+                rgba(255, 255, 255, 0.1);
+
+            border-radius: 12px;
+
+            outline: none;
+
+            background:
+                rgba(20, 24, 38, 0.92);
+
+            color: white;
+
+            font-size: 16px;
+        }
+
+        .search input:focus {
+            border-color: #5865f2;
+
+            box-shadow:
+                0 0 0 3px
+                rgba(88, 101, 242, 0.12);
+        }
+
+        /* =========================
+           GAME GRID
+        ========================= */
+
+        .games {
+            display: grid;
+
+            grid-template-columns:
+                repeat(
+                    auto-fit,
+                    minmax(250px, 1fr)
+                );
+
+            gap: 20px;
+        }
+
+        .game {
+            overflow: hidden;
+
+            border:
+                1px solid
+                rgba(255, 255, 255, 0.08);
+
+            border-radius: 17px;
+
+            background:
+                rgba(20, 24, 38, 0.94);
+
+            transition:
+                transform 0.2s,
+                border-color 0.2s,
+                box-shadow 0.2s;
+        }
+
+        .game:hover {
+            transform: translateY(-5px);
+
+            border-color:
+                rgba(88, 101, 242, 0.65);
+
+            box-shadow:
+                0 18px 40px
+                rgba(0, 0, 0, 0.35);
+        }
+
+        .game-image {
+            height: 155px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #5865f2,
+                    #7c3aed
+                );
+
+            font-size: 58px;
+        }
+
+        .game-content {
+            padding: 20px;
+        }
+
+        .game-content h2 {
+            margin: 0 0 9px;
+
+            font-size: 21px;
+        }
+
+        .game-content p {
+            min-height: 65px;
+
+            margin: 0 0 18px;
+
+            color: #9da5b5;
+
+            line-height: 1.5;
+
+            font-size: 14px;
+        }
+
+        .play-button {
+            display: block;
+
+            width: 100%;
+
+            padding: 13px;
+
+            border-radius: 10px;
+
+            background: #5865f2;
+
+            color: white;
+
+            text-align: center;
+
+            text-decoration: none;
+
+            font-weight: bold;
+
+            transition:
+                background 0.2s,
+                transform 0.2s;
+        }
+
+        .play-button:hover {
+            background: #4752c4;
+
+            transform: translateY(-1px);
+        }
+
+        /* =========================
+           RUNNER
+        ========================= */
+
+        .runner {
+            margin: 65px 0 35px;
+
+            padding: 30px;
+
+            border:
+                1px solid
+                rgba(255, 255, 255, 0.08);
+
+            border-radius: 18px;
+
+            background:
+                rgba(20, 24, 38, 0.95);
+
+            box-shadow:
+                0 15px 45px
+                rgba(0, 0, 0, 0.2);
+        }
+
+        .runner h2 {
+            margin: 0 0 8px;
+
+            font-size: 25px;
+        }
+
+        .runner-description {
+            margin: 0 0 20px;
+
+            color: #9da5b5;
+
+            line-height: 1.6;
+        }
+
+        .runner-row {
+            display: flex;
+
+            gap: 10px;
+        }
+
+        .runner-row input {
+            flex: 1;
+
+            min-width: 0;
+
+            padding: 15px;
+
+            border:
+                1px solid
+                rgba(255, 255, 255, 0.1);
+
+            border-radius: 10px;
+
+            outline: none;
+
+            background: #0c101a;
+
+            color: white;
+
+            font-size: 15px;
+        }
+
+        .runner-row input:focus {
+            border-color: #5865f2;
+        }
+
+        button {
+            padding: 14px 22px;
+
+            border: 0;
+
+            border-radius: 10px;
+
+            background: #5865f2;
+
+            color: white;
+
+            cursor: pointer;
+
+            font-size: 15px;
+
+            font-weight: bold;
+
+            transition:
+                background 0.2s,
+                transform 0.2s;
+        }
+
+        button:hover {
+            background: #4752c4;
+
+            transform: translateY(-1px);
+        }
+
+        .local-button {
+            margin-top: 12px;
+
+            background: #303746;
+        }
+
+        .local-button:hover {
+            background: #3d4658;
+        }
+
+        /* =========================
+           GAME FRAME
+        ========================= */
+
+        .frame-container {
+            position: relative;
+
+            margin-top: 25px;
+
+            display: none;
+
+            background: #000;
+
+            border-radius: 12px;
+
+            overflow: hidden;
+        }
+
+        .game-controls {
+            display: flex;
+
+            justify-content: flex-end;
+
+            gap: 8px;
+
+            padding: 10px;
+
+            background: #111522;
+        }
+
+        .game-controls button {
+            padding: 9px 14px;
+
+            font-size: 13px;
+        }
+
+        .fullscreen-button {
+            background: #5865f2;
+        }
+
+        .close-button {
+            background: #303746;
+        }
+
+        .close-button:hover {
+            background: #b83b3b;
+        }
+
+        #gameFrame {
+            width: 100%;
+
+            height: 650px;
+
+            display: block;
+
+            border: 0;
+
+            background: white;
+        }
+
+        /* =========================
+           FULLSCREEN MODE
+        ========================= */
+
+        .frame-container:fullscreen {
+            width: 100vw;
+            height: 100vh;
+
+            border-radius: 0;
+
+            background: black;
+        }
+
+        .frame-container:fullscreen
+        #gameFrame {
+            width: 100%;
+            height: calc(100vh - 55px);
+        }
+
+        .frame-container:-webkit-full-screen {
+            width: 100vw;
+            height: 100vh;
+
+            border-radius: 0;
+
+            background: black;
+        }
+
+        .frame-container:-webkit-full-screen
+        #gameFrame {
+            width: 100%;
+            height: calc(100vh - 55px);
+        }
+
+        /* =========================
+           STATUS
+        ========================= */
+
+        .runner-status {
+            min-height: 18px;
+
+            margin-top: 13px;
+
+            color: #737d90;
+
+            font-size: 13px;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            padding:
+                35px
+                20px
+                45px;
+
+            text-align: center;
+
+            color: #646d7d;
+
+            font-size: 13px;
+        }
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 650px) {
+
+            header {
+                padding-top: 40px;
+            }
+
+            header h1 {
+                font-size: 33px;
+            }
+
+            .runner-row {
+                flex-direction: column;
+            }
+
+            #gameFrame {
+                height: 500px;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     HEADER
+========================================================= -->
+
+<header>
+
+    <div class="logo">
+        🎮
+    </div>
+
+    <h1>
+        Tuff HTML Loader
+    </h1>
+
+    <p class="subtitle">
+        Load HTML links and files locally to avoid LineWize, Lightspeed, GoGuardian, Etc.
+    </p>
+
+</header>
+
+
+<main class="container">
+
+
+    <!-- =====================================================
+         SEARCH
+    ====================================================== -->
+
+    <div class="search">
+
+        <input
+            id="search"
+            type="text"
+            placeholder="🔎 Search games..."
+            oninput="searchGames()"
+        >
+
+    </div>
+
+
+    <!-- =====================================================
+         GAMES
+         
+         COPY AN ENTIRE "article" TO ADD ANOTHER GAME.
+    ====================================================== -->
+
+    <section
+        class="games"
+        id="games"
+    >
+
+
+        <!-- =================================================
+             GEOMETRY DASH LITE
+        ================================================== -->
+
+        <article class="game">
+
+            <div class="game-image">
+                🎵
+            </div>
+
+            <div class="game-content">
+
+                <h2>
+                    Geometry Dash Lite
+                </h2>
+
+                <p>
+                    A rhythm-based platform game.
+                </p>
+
+                <a
+                    class="play-button"
+                    href="#runner"
+                    onclick="
+                        loadGame(
+                            'https://raw.githubusercontent.com/CoolDude2349/Offline-HTML-Games-Pack/refs/heads/master/offline/geometrydashlite.html'
+                        );
+                        return false;
+                    "
+                >
+                    ▶ Play Game
+                </a>
+
+            </div>
+
+        </article>
+
+
+        <!-- =================================================
+             temp // Football Bros
+        ================================================== -->
+
+        <article class="game">
+
+            <div class="game-image">
+                🏈
+            </div>
+
+            <div class="game-content">
+
+                <h2>
+                    Football Bros
+                </h2>
+
+                <p>
+                    Fast-paced football action! Dodge, score, and win!
+                </p>
+
+                <a
+                    class="play-button"
+                    href="#runner"
+                    onclick="
+                        loadGame('https://raw.githubusercontent.com/CoolDude2349/Offline-HTML-Games-Pack/refs/heads/master/offline/footballbros.html');
+                        return false;
+                    "
+                >
+                    ▶ Play Game
+                </a>
+
+            </div>
+
+        </article>
+
+
+        <!-- =================================================
+             ANOTHER TEMPLATE
+        ================================================== -->
+
+        <!--
+
+        <article class="game">
+
+            <div class="game-image">
+                🚀
+            </div>
+
+            <div class="game-content">
+
+                <h2>
+                    Another Game
+                </h2>
+
+                <p>
+                    Description of the game.
+                </p>
+
+                <a
+                    class="play-button"
+                    href="#runner"
+                    onclick="
+                        loadGame('YOUR_HTML_URL');
+                        return false;
+                    "
+                >
+                    ▶ Play Game
+                </a>
+
+            </div>
+
+        </article>
+
+        -->
+
+
+    </section>
+
+
+    <!-- =====================================================
+         HTML RUNNER
+    ====================================================== -->
+
+    <section
+        class="runner"
+        id="runner"
+    >
+
+        <h2>
+            ▶ HTML Game Runner
+        </h2>
+
+        <p class="runner-description">
+            Paste the URL of an HTML file below and load it
+            directly inside this page.
+        </p>
+
+
+        <div class="runner-row">
+
+            <input
+                id="gameUrl"
+                type="url"
+                placeholder="https://example.com/game.html"
+            >
+
+            <button
+                onclick="runUrl()"
+            >
+                Run
+            </button>
+
+        </div>
+
+
+        <!-- LOCAL HTML -->
+
+        <button
+            class="local-button"
+            onclick="
+                document
+                    .getElementById('localFile')
+                    .click()
+            "
+        >
+            📁 Run Local HTML File
+        </button>
+
+
+        <input
+            id="localFile"
+            type="file"
+            accept=".html,.htm"
+            style="display:none"
+            onchange="runLocalFile(event)"
+        >
+
+
+        <!-- GAME WINDOW -->
+
+        <div
+            class="frame-container"
+            id="frameContainer"
+        >
+
+
+            <!-- CONTROLS -->
+
+            <div class="game-controls">
+
+                <button
+                    class="fullscreen-button"
+                    onclick="fullscreenGame()"
+                >
+                    ⛶ Fullscreen
+                </button>
+
+                <button
+                    class="close-button"
+                    onclick="closeGame()"
+                >
+                    ✕ Close
+                </button>
+
+            </div>
+
+
+            <!-- IFRAME -->
+
+            <iframe
+                id="gameFrame"
+                sandbox="
+                    allow-scripts
+                    allow-forms
+                    allow-pointer-lock
+                    allow-popups
+                    allow-modals
+                    allow-same-origin
+                "
+                allow="fullscreen"
+            ></iframe>
+
+
+        </div>
+
+
+        <div
+            class="runner-status"
+            id="runnerStatus"
+        ></div>
+
+
+    </section>
+
+
+</main>
+
+
+<footer>
+
+    this is straight chatgpt btw dont be mad at me
+
+</footer>
+
+
+<script>
+
+
+    /* =========================================================
+       SEARCH
+    ========================================================= */
+
+    function searchGames() {
+
+        const search =
+            document
+                .getElementById("search")
+                .value
+                .toLowerCase()
+                .trim();
+
+
+        const games =
+            document.querySelectorAll(".game");
+
+
+        games.forEach(function(game) {
+
+            const text =
+                game.innerText
+                    .toLowerCase();
+
+
+            if (text.includes(search)) {
+
+                game.style.display = "";
+
+            }
+            else {
+
+                game.style.display = "none";
+
+            }
+
+        });
+
+    }
+
+
+    /* =========================================================
+       RUN URL
+    ========================================================= */
+
+    function runUrl() {
+
+        const input =
+            document
+                .getElementById("gameUrl");
+
+
+        const url =
+            input.value.trim();
+
+
+        if (!url) {
+
+            setStatus(
+                "Paste an HTML URL first.",
+                true
+            );
+
+            return;
+        }
+
+
+        loadGame(url);
+
+    }
+
+
+    /* =========================================================
+       LOAD HTML GAME
+    ========================================================= */
+
+    async function loadGame(url) {
+
+        const frame =
+            document
+                .getElementById("gameFrame");
+
+
+        const container =
+            document
+                .getElementById("frameContainer");
+
+
+        setStatus(
+            "Loading game..."
+        );
+
+
+        try {
+
+            const parsed =
+                new URL(url);
+
+
+            if (
+                parsed.protocol !== "http:" &&
+                parsed.protocol !== "https:"
+            ) {
+
+                throw new Error(
+                    "Only HTTP and HTTPS URLs are supported."
+                );
+
+            }
+
+
+            /*
+             * Fetch the HTML.
+             */
+
+            const response =
+                await fetch(
+                    parsed.href,
+                    {
+                        method: "GET",
+                        cache: "no-cache"
+                    }
+                );
+
+
+            if (!response.ok) {
+
+                throw new Error(
+                    "HTTP " +
+                    response.status
+                );
+
+            }
+
+
+            let html =
+                await response.text();
+
+
+            /*
+             * Preserve relative paths for assets.
+             */
+
+            const baseTag =
+                "<base href=\"" +
+                escapeAttribute(
+                    parsed.href
+                ) +
+                "\">";
+
+
+            if (
+                /<head[\s>]/i.test(html)
+            ) {
+
+                html =
+                    html.replace(
+                        /<head([^>]*)>/i,
+                        "<head$1>" +
+                        baseTag
+                    );
+
+            }
+            else {
+
+                html =
+                    "<head>" +
+                    baseTag +
+                    "</head>" +
+                    html;
+
+            }
+
+
+            /*
+             * Load the HTML into the iframe.
+             */
+
+            frame.srcdoc =
+                html;
+
+
+            container.style.display =
+                "block";
+
+
+            setStatus(
+                "Game loaded."
+            );
+
+
+            container.scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+            });
+
+
+        }
+        catch (error) {
+
+            console.error(error);
+
+
+            setStatus(
+                "Could not load the HTML file. " +
+                "The server may block cross-origin requests " +
+                "or the URL may not be an HTML file.",
+                true
+            );
+
+        }
+
+    }
+
+
+    /* =========================================================
+       LOCAL FILE
+    ========================================================= */
+
+    function runLocalFile(event) {
+
+        const file =
+            event.target.files[0];
+
+
+        if (!file)
+            return;
+
+
+        const reader =
+            new FileReader();
+
+
+        reader.onload =
+            function() {
+
+                const frame =
+                    document
+                        .getElementById("gameFrame");
+
+
+                const container =
+                    document
+                        .getElementById(
+                            "frameContainer"
+                        );
+
+
+                frame.srcdoc =
+                    reader.result;
+
+
+                container.style.display =
+                    "block";
+
+
+                setStatus(
+                    "Local HTML file loaded."
+                );
+
+
+                container.scrollIntoView({
+                    behavior: "smooth",
+                    block: "center"
+                });
+
+            };
+
+
+        reader.onerror =
+            function() {
+
+                setStatus(
+                    "Could not read the local HTML file.",
+                    true
+                );
+
+            };
+
+
+        reader.readAsText(file);
+
+    }
+
+
+    /* =========================================================
+       FULLSCREEN
+    ========================================================= */
+
+    function fullscreenGame() {
+
+        const container =
+            document
+                .getElementById(
+                    "frameContainer"
+                );
+
+
+        /*
+         * Already fullscreen?
+         */
+
+        if (document.fullscreenElement) {
+
+            if (
+                document.exitFullscreen
+            ) {
+
+                document.exitFullscreen();
+
+            }
+
+            return;
+        }
+
+
+        /*
+         * Request fullscreen on the entire
+         * game container.
+         */
+
+        if (
+            container.requestFullscreen
+        ) {
+
+            container.requestFullscreen();
+
+        }
+        else if (
+            container.webkitRequestFullscreen
+        ) {
+
+            container.webkitRequestFullscreen();
+
+        }
+        else {
+
+            setStatus(
+                "Fullscreen is not supported by this browser.",
+                true
+            );
+
+        }
+
+    }
+
+
+    /* =========================================================
+       CLOSE GAME
+    ========================================================= */
+
+    function closeGame() {
+
+        const frame =
+            document
+                .getElementById(
+                    "gameFrame"
+                );
+
+
+        const container =
+            document
+                .getElementById(
+                    "frameContainer"
+                );
+
+
+        /*
+         * Stop the game.
+         */
+
+        frame.srcdoc = "";
+
+
+        container.style.display =
+            "none";
+
+
+        /*
+         * Exit fullscreen if necessary.
+         */
+
+        if (
+            document.fullscreenElement
+        ) {
+
+            if (
+                document.exitFullscreen
+            ) {
+
+                document.exitFullscreen();
+
+            }
+
+        }
+
+
+        setStatus("");
+
+    }
+
+
+    /* =========================================================
+       STATUS MESSAGE
+    ========================================================= */
+
+    function setStatus(
+        message,
+        error = false
+    ) {
+
+        const status =
+            document
+                .getElementById(
+                    "runnerStatus"
+                );
+
+
+        status.textContent =
+            message;
+
+
+        status.style.color =
+            error
+                ? "#ff6b6b"
+                : "#737d90";
+
+    }
+
+
+    /* =========================================================
+       ESCAPE URL FOR HTML ATTRIBUTE
+    ========================================================= */
+
+    function escapeAttribute(value) {
+
+        return value
+            .replace(/&/g, "&amp;")
+            .replace(/"/g, "&quot;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;");
+
+    }
+
+
+    /* =========================================================
+       ENTER KEY
+    ========================================================= */
+
+    document
+        .getElementById("gameUrl")
+        .addEventListener(
+            "keydown",
+            function(event) {
+
+                if (event.key === "Enter") {
+
+                    runUrl();
+
+                }
+
+            }
+        );
+
+
+</script>
+
+</body>
+</html>
