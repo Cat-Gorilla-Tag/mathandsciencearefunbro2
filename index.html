@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +7,7 @@
 
     <title>Home - Classroom</title>
     <link rel="icon" type="image/png" href="https://ssl.gstatic.com/classroom/favicon.png">
+
     <style>
 
         * {
@@ -31,6 +33,8 @@
                     #0b0e16 50%,
                     #05060a 100%
                 );
+
+            transition: background 0.35s ease;
         }
 
         /* =========================
@@ -66,11 +70,14 @@
             box-shadow:
                 0 15px 40px
                 rgba(88, 101, 242, 0.35);
+
+            transition:
+                background 0.35s ease,
+                box-shadow 0.35s ease;
         }
 
         header h1 {
             margin: 0;
-
             font-size: 44px;
         }
 
@@ -92,7 +99,6 @@
 
         .container {
             width: min(1100px, 92%);
-
             margin: 0 auto;
         }
 
@@ -123,6 +129,10 @@
             color: white;
 
             font-size: 16px;
+
+            transition:
+                border-color 0.25s ease,
+                box-shadow 0.25s ease;
         }
 
         .search input:focus {
@@ -193,6 +203,9 @@
                 );
 
             font-size: 58px;
+
+            transition:
+                background 0.35s ease;
         }
 
         .game-content {
@@ -201,7 +214,6 @@
 
         .game-content h2 {
             margin: 0 0 9px;
-
             font-size: 21px;
         }
 
@@ -243,7 +255,6 @@
 
         .play-button:hover {
             background: #4752c4;
-
             transform: translateY(-1px);
         }
 
@@ -272,7 +283,6 @@
 
         .runner h2 {
             margin: 0 0 8px;
-
             font-size: 25px;
         }
 
@@ -286,7 +296,6 @@
 
         .runner-row {
             display: flex;
-
             gap: 10px;
         }
 
@@ -310,6 +319,10 @@
             color: white;
 
             font-size: 15px;
+
+            transition:
+                border-color 0.25s ease,
+                box-shadow 0.25s ease;
         }
 
         .runner-row input:focus {
@@ -340,13 +353,11 @@
 
         button:hover {
             background: #4752c4;
-
             transform: translateY(-1px);
         }
 
         .local-button {
             margin-top: 12px;
-
             background: #303746;
         }
 
@@ -386,7 +397,6 @@
 
         .game-controls button {
             padding: 9px 14px;
-
             font-size: 13px;
         }
 
@@ -404,7 +414,6 @@
 
         #gameFrame {
             width: 100%;
-
             height: 650px;
 
             display: block;
@@ -415,7 +424,7 @@
         }
 
         /* =========================
-           FULLSCREEN MODE
+           FULLSCREEN
         ========================= */
 
         .frame-container:fullscreen {
@@ -427,8 +436,7 @@
             background: black;
         }
 
-        .frame-container:fullscreen
-        #gameFrame {
+        .frame-container:fullscreen #gameFrame {
             width: 100%;
             height: calc(100vh - 55px);
         }
@@ -442,8 +450,7 @@
             background: black;
         }
 
-        .frame-container:-webkit-full-screen
-        #gameFrame {
+        .frame-container:-webkit-full-screen #gameFrame {
             width: 100%;
             height: calc(100vh - 55px);
         }
@@ -463,12 +470,210 @@
         }
 
         /* =========================
+           THEME SELECTOR
+        ========================= */
+
+        .theme-selector {
+            display: flex;
+
+            justify-content: center;
+            align-items: center;
+
+            gap: 20px;
+
+            margin: 10px 0 35px;
+        }
+
+        .theme-sphere {
+            position: relative;
+
+            width: 40px;
+            height: 40px;
+
+            padding: 0;
+
+            border: 3px solid transparent;
+
+            border-radius: 50%;
+
+            cursor: pointer;
+
+            outline: none;
+
+            box-shadow:
+                inset 6px 6px 10px
+                rgba(255, 255, 255, 0.45),
+
+                inset -7px -8px 11px
+                rgba(0, 0, 0, 0.4),
+
+                0 5px 15px
+                rgba(0, 0, 0, 0.5);
+
+            transition:
+                transform 0.2s ease,
+                border-color 0.2s ease,
+                box-shadow 0.2s ease;
+        }
+
+        /* Shiny reflection */
+
+        .theme-sphere::before {
+            content: "";
+
+            position: absolute;
+
+            top: 5px;
+            left: 7px;
+
+            width: 15px;
+            height: 8px;
+
+            border-radius: 50%;
+
+            background:
+                rgba(255, 255, 255, 0.75);
+
+            filter: blur(0.5px);
+
+            transform: rotate(-25deg);
+
+            pointer-events: none;
+        }
+
+        .theme-sphere::after {
+            content: "";
+
+            position: absolute;
+
+            top: 4px;
+            left: 8px;
+
+            width: 6px;
+            height: 4px;
+
+            border-radius: 50%;
+
+            background:
+                rgba(255, 255, 255, 0.5);
+
+            pointer-events: none;
+        }
+
+        /* IMPORTANT:
+           Each sphere keeps its own color when hovered.
+        */
+
+        .theme-sphere:hover {
+            transform: scale(1.15);
+
+            filter: brightness(1.12);
+
+            background-color: inherit;
+        }
+
+        .theme-sphere.active {
+            border-color: white;
+
+            box-shadow:
+                0 0 0 3px
+                rgba(255, 255, 255, 0.3),
+
+                inset 6px 6px 10px
+                rgba(255, 255, 255, 0.48),
+
+                inset -7px -8px 11px
+                rgba(0, 0, 0, 0.4),
+
+                0 6px 18px
+                rgba(0, 0, 0, 0.55);
+        }
+
+        /* =========================
+           PURPLE
+        ========================= */
+
+        .purple-theme {
+            background:
+                radial-gradient(
+                    circle at 32% 27%,
+                    #b7baff 0%,
+                    #858cff 25%,
+                    #5865f2 55%,
+                    #3730a3 100%
+                );
+        }
+
+        .purple-theme:hover {
+            background:
+                radial-gradient(
+                    circle at 32% 27%,
+                    #c5c7ff 0%,
+                    #949aff 25%,
+                    #6874ff 55%,
+                    #4038b5 100%
+                );
+        }
+
+        /* =========================
+           RED
+        ========================= */
+
+        .red-theme {
+            background:
+                radial-gradient(
+                    circle at 32% 27%,
+                    #ffaaaa 0%,
+                    #ff6262 25%,
+                    #ef4444 55%,
+                    #991b1b 100%
+                );
+        }
+
+        .red-theme:hover {
+            background:
+                radial-gradient(
+                    circle at 32% 27%,
+                    #ffbaba 0%,
+                    #ff7070 25%,
+                    #f05252 55%,
+                    #a52222 100%
+                );
+        }
+
+        /* =========================
+           ORANGE
+        ========================= */
+
+        .orange-theme {
+            background:
+                radial-gradient(
+                    circle at 32% 27%,
+                    #ffd596 0%,
+                    #ffad52 25%,
+                    #f97316 55%,
+                    #c2410c 100%
+                );
+        }
+
+        .orange-theme:hover {
+            background:
+                radial-gradient(
+                    circle at 32% 27%,
+                    #ffe0aa 0%,
+                    #ffb968 25%,
+                    #ff8429 55%,
+                    #d04b10 100%
+                );
+        }
+
+        /* =========================
            FOOTER
         ========================= */
 
         footer {
             padding:
-                35px
+                0
                 20px
                 45px;
 
@@ -500,6 +705,7 @@
             #gameFrame {
                 height: 500px;
             }
+
         }
 
     </style>
@@ -551,8 +757,6 @@
 
     <!-- =====================================================
          GAMES
-         
-         COPY AN ENTIRE "article" TO ADD ANOTHER GAME.
     ====================================================== -->
 
     <section
@@ -561,9 +765,7 @@
     >
 
 
-        <!-- =================================================
-             GEOMETRY DASH LITE
-        ================================================== -->
+        <!-- GEOMETRY DASH LITE -->
 
         <article class="game">
 
@@ -599,9 +801,7 @@
         </article>
 
 
-        <!-- =================================================
-             temp // Football Bros
-        ================================================== -->
+        <!-- FOOTBALL BROS -->
 
         <article class="game">
 
@@ -623,7 +823,9 @@
                     class="play-button"
                     href="#runner"
                     onclick="
-                        loadGame('https://raw.githubusercontent.com/CoolDude2349/Offline-HTML-Games-Pack/refs/heads/master/offline/footballbros.html');
+                        loadGame(
+                            'https://raw.githubusercontent.com/CoolDude2349/Offline-HTML-Games-Pack/refs/heads/master/offline/footballbros.html'
+                        );
                         return false;
                     "
                 >
@@ -633,9 +835,9 @@
             </div>
 
         </article>
-        <!-- =================================================
-             temp // Crossy road
-        ================================================== -->
+
+
+        <!-- CROSSY ROAD -->
 
         <article class="game">
 
@@ -657,7 +859,9 @@
                     class="play-button"
                     href="#runner"
                     onclick="
-                        loadGame('https://raw.githubusercontent.com/CoolDude2349/Offline-HTML-Games-Pack/refs/heads/master/offline/crossyroad.htm');
+                        loadGame(
+                            'https://raw.githubusercontent.com/CoolDude2349/Offline-HTML-Games-Pack/refs/heads/master/offline/crossyroad.htm'
+                        );
                         return false;
                     "
                 >
@@ -667,9 +871,9 @@
             </div>
 
         </article>
-<!-- =================================================
-             temp // Slope
-        ================================================== -->
+
+
+        <!-- SLOPE -->
 
         <article class="game">
 
@@ -691,7 +895,9 @@
                     class="play-button"
                     href="#runner"
                     onclick="
-                        loadGame('https://raw.githubusercontent.com/CoolDude2349/Offline-HTML-Games-Pack/refs/heads/master/offline/slope3.html');
+                        loadGame(
+                            'https://raw.githubusercontent.com/CoolDude2349/Offline-HTML-Games-Pack/refs/heads/master/offline/slope3.html'
+                        );
                         return false;
                     "
                 >
@@ -701,9 +907,9 @@
             </div>
 
         </article>
-        <!-- =================================================
-             temp // Basketball
-        ================================================== -->
+
+
+        <!-- BASKETBALL BROS -->
 
         <article class="game">
 
@@ -725,7 +931,9 @@
                     class="play-button"
                     href="#runner"
                     onclick="
-                        loadGame('https://raw.githubusercontent.com/CoolDude2349/Offline-HTML-Games-Pack/refs/heads/master/offline/basketbros.html');
+                        loadGame(
+                            'https://raw.githubusercontent.com/CoolDude2349/Offline-HTML-Games-Pack/refs/heads/master/offline/basketbros.html'
+                        );
                         return false;
                     "
                 >
@@ -735,9 +943,9 @@
             </div>
 
         </article>
-        <!-- =================================================
-             temp // Moto OG
-        ================================================== -->
+
+
+        <!-- MOTO X3M -->
 
         <article class="game">
 
@@ -759,7 +967,9 @@
                     class="play-button"
                     href="#runner"
                     onclick="
-                        loadGame('https://raw.githubusercontent.com/CoolDude2349/Offline-HTML-Games-Pack/refs/heads/master/offline/motox3m.htm');
+                        loadGame(
+                            'https://raw.githubusercontent.com/CoolDude2349/Offline-HTML-Games-Pack/refs/heads/master/offline/motox3m.htm'
+                        );
                         return false;
                     "
                 >
@@ -769,9 +979,9 @@
             </div>
 
         </article>
-        <!-- =================================================
-             temp // Snow rider
-        ================================================== -->
+
+
+        <!-- SNOW RIDER -->
 
         <article class="game">
 
@@ -793,7 +1003,9 @@
                     class="play-button"
                     href="#runner"
                     onclick="
-                        loadGame('https://raw.githubusercontent.com/CoolDude2349/Offline-HTML-Games-Pack/refs/heads/master/offline/snowrider.htm');
+                        loadGame(
+                            'https://raw.githubusercontent.com/CoolDude2349/Offline-HTML-Games-Pack/refs/heads/master/offline/snowrider.htm'
+                        );
                         return false;
                     "
                 >
@@ -803,9 +1015,9 @@
             </div>
 
         </article>
-         <!-- =================================================
-             temp // Tap Road
-        ================================================== -->
+
+
+        <!-- TAP ROAD -->
 
         <article class="game">
 
@@ -827,7 +1039,9 @@
                     class="play-button"
                     href="#runner"
                     onclick="
-                        loadGame('https://raw.githubusercontent.com/CoolDude2349/Offline-HTML-Games-Pack/refs/heads/master/offline/taproad.html');
+                        loadGame(
+                            'https://raw.githubusercontent.com/CoolDude2349/Offline-HTML-Games-Pack/refs/heads/master/offline/taproad.html'
+                        );
                         return false;
                     "
                 >
@@ -837,14 +1051,14 @@
             </div>
 
         </article>
-        <!-- =================================================
-             temp // Shell Shockers
-        ================================================== -->
+
+
+        <!-- SHELL SHOCKERS -->
 
         <article class="game">
 
             <div class="game-image">
-               🥚 
+                🥚
             </div>
 
             <div class="game-content">
@@ -861,7 +1075,9 @@
                     class="play-button"
                     href="#runner"
                     onclick="
-                        loadGame('https://raw.githubusercontent.com/Cat-Gorilla-Tag/mathandsciencearefunbro2/refs/heads/main/games/shellshock.html');
+                        loadGame(
+                            'https://raw.githubusercontent.com/Cat-Gorilla-Tag/mathandsciencearefunbro2/refs/heads/main/games/shellshock.html'
+                        );
                         return false;
                     "
                 >
@@ -871,14 +1087,14 @@
             </div>
 
         </article>
-        <!-- =================================================
-             temp // geo guesser
-        ================================================== -->
+
+
+        <!-- OPEN GUESSR -->
 
         <article class="game">
 
             <div class="game-image">
-               🌍 
+                🌍
             </div>
 
             <div class="game-content">
@@ -895,7 +1111,9 @@
                     class="play-button"
                     href="#runner"
                     onclick="
-                        loadGame('https://raw.githubusercontent.com/Cat-Gorilla-Tag/mathandsciencearefunbro2/refs/heads/main/games/geoguesser.html');
+                        loadGame(
+                            'https://raw.githubusercontent.com/Cat-Gorilla-Tag/mathandsciencearefunbro2/refs/heads/main/games/geoguesser.html'
+                        );
                         return false;
                     "
                 >
@@ -905,46 +1123,6 @@
             </div>
 
         </article>
-
-
-        <!-- =================================================
-             ANOTHER TEMPLATE
-        ================================================== -->
-
-        <!--
-
-        <article class="game">
-
-            <div class="game-image">
-                🚀
-            </div>
-
-            <div class="game-content">
-
-                <h2>
-                    Another Game
-                </h2>
-
-                <p>
-                    Description of the game.
-                </p>
-
-                <a
-                    class="play-button"
-                    href="#runner"
-                    onclick="
-                        loadGame('YOUR_HTML_URL');
-                        return false;
-                    "
-                >
-                    ▶ Play Game
-                </a>
-
-            </div>
-
-        </article>
-
-        -->
 
 
     </section>
@@ -986,8 +1164,6 @@
         </div>
 
 
-        <!-- LOCAL HTML -->
-
         <button
             class="local-button"
             onclick="
@@ -1016,9 +1192,6 @@
             id="frameContainer"
         >
 
-
-            <!-- CONTROLS -->
-
             <div class="game-controls">
 
                 <button
@@ -1037,8 +1210,6 @@
 
             </div>
 
-
-            <!-- IFRAME -->
 
             <iframe
                 id="gameFrame"
@@ -1069,6 +1240,33 @@
 </main>
 
 
+<!-- =========================================================
+     THEME SELECTOR
+========================================================= -->
+
+<div class="theme-selector">
+
+    <button
+        class="theme-sphere purple-theme active"
+        aria-label="Purple theme"
+        onclick="setTheme('purple', this)"
+    ></button>
+
+    <button
+        class="theme-sphere red-theme"
+        aria-label="Red theme"
+        onclick="setTheme('red', this)"
+    ></button>
+
+    <button
+        class="theme-sphere orange-theme"
+        aria-label="Orange theme"
+        onclick="setTheme('orange', this)"
+    ></button>
+
+</div>
+
+
 <footer>
 
     https://github.com/Cat-Gorilla-Tag/mathandsciencearefunbro2/
@@ -1077,6 +1275,271 @@
 
 
 <script>
+
+    /* =========================================================
+       THEMES
+    ========================================================= */
+
+    const themes = {
+
+        purple: {
+            background:
+                "radial-gradient(circle at top, #202840 0%, #0b0e16 50%, #05060a 100%)",
+
+            primary: "#5865f2",
+
+            secondary: "#7c3aed",
+
+            hover: "#4752c4",
+
+            glow:
+                "rgba(88, 101, 242, 0.35)",
+
+            focusGlow:
+                "rgba(88, 101, 242, 0.12)",
+
+            border:
+                "rgba(88, 101, 242, 0.65)"
+        },
+
+        red: {
+            background:
+                "radial-gradient(circle at top, #402020 0%, #0b0e16 50%, #05060a 100%)",
+
+            primary: "#ef4444",
+
+            secondary: "#b91c1c",
+
+            hover: "#b91c1c",
+
+            glow:
+                "rgba(239, 68, 68, 0.35)",
+
+            focusGlow:
+                "rgba(239, 68, 68, 0.12)",
+
+            border:
+                "rgba(239, 68, 68, 0.65)"
+        },
+
+        orange: {
+            background:
+                "radial-gradient(circle at top, #402b20 0%, #0b0e16 50%, #05060a 100%)",
+
+            primary: "#f97316",
+
+            secondary: "#c2410c",
+
+            hover: "#c2410c",
+
+            glow:
+                "rgba(249, 115, 22, 0.35)",
+
+            focusGlow:
+                "rgba(249, 115, 22, 0.12)",
+
+            border:
+                "rgba(249, 115, 22, 0.65)"
+        }
+
+    };
+
+
+    /* =========================================================
+       SET THEME
+    ========================================================= */
+
+    function setTheme(themeName, selectedButton) {
+
+        const theme =
+            themes[themeName];
+
+
+        /* Background */
+
+        document.body.style.background =
+            theme.background;
+
+
+        /* Logo */
+
+        const logo =
+            document.querySelector(".logo");
+
+        logo.style.background =
+            "linear-gradient(135deg, " +
+            theme.primary +
+            ", " +
+            theme.secondary +
+            ")";
+
+        logo.style.boxShadow =
+            "0 15px 40px " +
+            theme.glow;
+
+
+        /* Game images */
+
+        document
+            .querySelectorAll(".game-image")
+            .forEach(function(image) {
+
+                image.style.background =
+                    "linear-gradient(135deg, " +
+                    theme.primary +
+                    ", " +
+                    theme.secondary +
+                    ")";
+
+            });
+
+
+        /* Play buttons */
+
+        document
+            .querySelectorAll(".play-button")
+            .forEach(function(button) {
+
+                button.style.background =
+                    theme.primary;
+
+                button.onmouseenter =
+                    function() {
+
+                        button.style.background =
+                            theme.hover;
+
+                    };
+
+                button.onmouseleave =
+                    function() {
+
+                        button.style.background =
+                            theme.primary;
+
+                    };
+
+            });
+
+
+        /* Search */
+
+        const searchInput =
+            document.getElementById("search");
+
+        searchInput.style.setProperty(
+            "--theme-color",
+            theme.primary
+        );
+
+
+        /* Runner input */
+
+        document
+            .querySelectorAll(".runner-row input, .search input")
+            .forEach(function(input) {
+
+                input.onfocus =
+                    function() {
+
+                        input.style.borderColor =
+                            theme.primary;
+
+                        input.style.boxShadow =
+                            "0 0 0 3px " +
+                            theme.focusGlow;
+
+                    };
+
+                input.onblur =
+                    function() {
+
+                        input.style.borderColor =
+                            "rgba(255, 255, 255, 0.1)";
+
+                        input.style.boxShadow =
+                            "none";
+
+                    };
+
+            });
+
+
+        /* Buttons */
+
+        document
+            .querySelectorAll("button")
+            .forEach(function(button) {
+
+                if (
+                    !button.classList.contains("local-button") &&
+                    !button.classList.contains("close-button") &&
+                    !button.classList.contains("theme-sphere")
+                ) {
+
+                    button.style.background =
+                        theme.primary;
+
+                    button.onmouseenter =
+                        function() {
+
+                            button.style.background =
+                                theme.hover;
+
+                        };
+
+                    button.onmouseleave =
+                        function() {
+
+                            button.style.background =
+                                theme.primary;
+
+                        };
+
+                }
+
+            });
+
+
+        /* Game hover borders */
+
+        document
+            .querySelectorAll(".game")
+            .forEach(function(game) {
+
+                game.onmouseenter =
+                    function() {
+
+                        game.style.borderColor =
+                            theme.border;
+
+                    };
+
+                game.onmouseleave =
+                    function() {
+
+                        game.style.borderColor =
+                            "rgba(255, 255, 255, 0.08)";
+
+                    };
+
+            });
+
+
+        /* Selector ring */
+
+        document
+            .querySelectorAll(".theme-sphere")
+            .forEach(function(sphere) {
+
+                sphere.classList.remove("active");
+
+            });
+
+
+        selectedButton.classList.add("active");
+
+    }
 
 
     /* =========================================================
@@ -1190,10 +1653,6 @@
             }
 
 
-            /*
-             * Fetch the HTML.
-             */
-
             const response =
                 await fetch(
                     parsed.href,
@@ -1217,10 +1676,6 @@
             let html =
                 await response.text();
 
-
-            /*
-             * Preserve relative paths for assets.
-             */
 
             const baseTag =
                 "<base href=\"" +
@@ -1252,10 +1707,6 @@
 
             }
 
-
-            /*
-             * Load the HTML into the iframe.
-             */
 
             frame.srcdoc =
                 html;
@@ -1377,10 +1828,6 @@
                 );
 
 
-        /*
-         * Already fullscreen?
-         */
-
         if (document.fullscreenElement) {
 
             if (
@@ -1394,11 +1841,6 @@
             return;
         }
 
-
-        /*
-         * Request fullscreen on the entire
-         * game container.
-         */
 
         if (
             container.requestFullscreen
@@ -1446,20 +1888,12 @@
                 );
 
 
-        /*
-         * Stop the game.
-         */
-
         frame.srcdoc = "";
 
 
         container.style.display =
             "none";
 
-
-        /*
-         * Exit fullscreen if necessary.
-         */
 
         if (
             document.fullscreenElement
@@ -1510,7 +1944,7 @@
 
 
     /* =========================================================
-       ESCAPE URL FOR HTML ATTRIBUTE
+       ESCAPE URL
     ========================================================= */
 
     function escapeAttribute(value) {
@@ -1548,3 +1982,4 @@
 
 </body>
 </html>
+
