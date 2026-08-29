@@ -259,6 +259,46 @@
         }
 
         /* =========================
+           SHOW MORE
+        ========================= */
+
+        .show-more-container {
+            display: flex;
+
+            justify-content: center;
+
+            margin: 30px 0 10px;
+        }
+
+        .show-more-button {
+            padding: 13px 500px;
+
+            border: 0;
+
+            border-radius: 10px;
+
+            background: #5865f2;
+
+            color: white;
+
+            cursor: pointer;
+
+            font-size: 15px;
+
+            font-weight: bold;
+
+            transition:
+                background 0.2s,
+                transform 0.2s;
+        }
+
+        .show-more-button:hover {
+            background: #4752c4;
+
+            transform: translateY(-1px);
+        }
+
+        /* =========================
            RUNNER
         ========================= */
 
@@ -516,8 +556,6 @@
                 box-shadow 0.2s ease;
         }
 
-        /* Shiny reflection */
-
         .theme-sphere::before {
             content: "";
 
@@ -560,16 +598,9 @@
             pointer-events: none;
         }
 
-        /* IMPORTANT:
-           Each sphere keeps its own color when hovered.
-        */
-
         .theme-sphere:hover {
             transform: scale(1.15);
-
             filter: brightness(1.12);
-
-            background-color: inherit;
         }
 
         .theme-sphere.active {
@@ -668,6 +699,32 @@
         }
 
         /* =========================
+           CYAN
+        ========================= */
+
+        .cyan-theme {
+            background:
+                radial-gradient(
+                    circle at 32% 27%,
+                    #b6fff0 0%,
+                    #5fffd0 25%,
+                    #22d3ee 55%,
+                    #16a34a 100%
+                );
+        }
+
+        .cyan-theme:hover {
+            background:
+                radial-gradient(
+                    circle at 32% 27%,
+                    #c8fff5 0%,
+                    #75ffda 25%,
+                    #38e8f5 55%,
+                    #22b85a 100%
+                );
+        }
+
+        /* =========================
            FOOTER
         ========================= */
 
@@ -715,10 +772,6 @@
 <body>
 
 
-<!-- =========================================================
-     HEADER
-========================================================= -->
-
 <header>
 
     <div class="logo">
@@ -739,10 +792,6 @@
 <main class="container">
 
 
-    <!-- =====================================================
-         SEARCH
-    ====================================================== -->
-
     <div class="search">
 
         <input
@@ -755,17 +804,11 @@
     </div>
 
 
-    <!-- =====================================================
-         GAMES
-    ====================================================== -->
-
     <section
         class="games"
         id="games"
     >
 
-
-        <!-- GEOMETRY DASH LITE -->
 
         <article class="game">
 
@@ -801,8 +844,6 @@
         </article>
 
 
-        <!-- FOOTBALL BROS -->
-
         <article class="game">
 
             <div class="game-image">
@@ -836,8 +877,6 @@
 
         </article>
 
-
-        <!-- CROSSY ROAD -->
 
         <article class="game">
 
@@ -873,8 +912,6 @@
         </article>
 
 
-        <!-- SLOPE -->
-
         <article class="game">
 
             <div class="game-image">
@@ -896,7 +933,7 @@
                     href="#runner"
                     onclick="
                         loadGame(
-                            'https://raw.githubusercontent.com/CoolDude2349/Offline-HTML-Games-Pack/refs/heads/master/offline/slope3.html'
+                            'https://raw.githubusercontent.com/Cat-Gorilla-Tag/mathandsciencearefunbro2/refs/heads/main/games/slope.html'
                         );
                         return false;
                     "
@@ -908,8 +945,6 @@
 
         </article>
 
-
-        <!-- BASKETBALL BROS -->
 
         <article class="game">
 
@@ -945,8 +980,6 @@
         </article>
 
 
-        <!-- MOTO X3M -->
-
         <article class="game">
 
             <div class="game-image">
@@ -980,8 +1013,6 @@
 
         </article>
 
-
-        <!-- SNOW RIDER -->
 
         <article class="game">
 
@@ -1017,8 +1048,6 @@
         </article>
 
 
-        <!-- TAP ROAD -->
-
         <article class="game">
 
             <div class="game-image">
@@ -1052,8 +1081,6 @@
 
         </article>
 
-
-        <!-- SHELL SHOCKERS -->
 
         <article class="game">
 
@@ -1089,8 +1116,6 @@
         </article>
 
 
-        <!-- OPEN GUESSR -->
-
         <article class="game">
 
             <div class="game-image">
@@ -1125,7 +1150,90 @@
         </article>
 
 
+        <article class="game">
+
+            <div class="game-image">
+                🚓
+            </div>
+
+            <div class="game-content">
+
+                <h2>
+                    Escape Road 2
+                </h2>
+
+                <p>
+                    Escape the cops, dodge traffic, and survive the ultimate high-speed getaway!
+                </p>
+
+                <a
+                    class="play-button"
+                    href="#runner"
+                    onclick="
+                        loadGame(
+                            'https://raw.githubusercontent.com/CoolDude2349/Offline-HTML-Games-Pack/refs/heads/master/offline/escaperoad2.html'
+                        );
+                        return false;
+                    "
+                >
+                    ▶ Play Game
+                </a>
+
+            </div>
+
+        </article>
+
+
+        <article class="game">
+
+            <div class="game-image">
+                ⚽
+            </div>
+
+            <div class="game-content">
+
+                <h2>
+                    Penalty Kick Online
+                </h2>
+
+                <p>
+                    Score past the keeper, master your aim, and become the penalty king!
+                </p>
+
+                <a
+                    class="play-button"
+                    href="#runner"
+                    onclick="
+                        loadGame(
+                            'https://raw.githubusercontent.com/Cat-Gorilla-Tag/mathandsciencearefunbro2/refs/heads/main/games/penaltykickonline.html'
+                        );
+                        return false;
+                    "
+                >
+                    ▶ Play Game
+                </a>
+
+            </div>
+
+        </article>
+
+
     </section>
+
+
+    <!-- SHOW MORE -->
+
+    <div class="show-more-container">
+
+        <button
+            id="showMoreButton"
+            class="show-more-button"
+            onclick="toggleGames()"
+        >
+            Show More
+        </button>
+
+    </div>
 
 
     <!-- =====================================================
@@ -1184,8 +1292,6 @@
             onchange="runLocalFile(event)"
         >
 
-
-        <!-- GAME WINDOW -->
 
         <div
             class="frame-container"
@@ -1264,6 +1370,12 @@
         onclick="setTheme('orange', this)"
     ></button>
 
+    <button
+        class="theme-sphere cyan-theme"
+        aria-label="Cyan theme"
+        onclick="setTheme('cyan', this)"
+    ></button>
+
 </div>
 
 
@@ -1300,6 +1412,26 @@
 
             border:
                 "rgba(88, 101, 242, 0.65)"
+        },
+
+        cyan: {
+            background:
+                "radial-gradient(circle at top, #203d38 0%, #0b0e16 50%, #05060a 100%)",
+
+            primary: "#22d3ee",
+
+            secondary: "#84cc16",
+
+            hover: "#16a34a",
+
+            glow:
+                "rgba(34, 211, 238, 0.35)",
+
+            focusGlow:
+                "rgba(34, 211, 238, 0.12)",
+
+            border:
+                "rgba(132, 204, 22, 0.65)"
         },
 
         red: {
@@ -1355,13 +1487,9 @@
             themes[themeName];
 
 
-        /* Background */
-
         document.body.style.background =
             theme.background;
 
-
-        /* Logo */
 
         const logo =
             document.querySelector(".logo");
@@ -1378,8 +1506,6 @@
             theme.glow;
 
 
-        /* Game images */
-
         document
             .querySelectorAll(".game-image")
             .forEach(function(image) {
@@ -1393,8 +1519,6 @@
 
             });
 
-
-        /* Play buttons */
 
         document
             .querySelectorAll(".play-button")
@@ -1421,19 +1545,6 @@
 
             });
 
-
-        /* Search */
-
-        const searchInput =
-            document.getElementById("search");
-
-        searchInput.style.setProperty(
-            "--theme-color",
-            theme.primary
-        );
-
-
-        /* Runner input */
 
         document
             .querySelectorAll(".runner-row input, .search input")
@@ -1464,8 +1575,6 @@
 
             });
 
-
-        /* Buttons */
 
         document
             .querySelectorAll("button")
@@ -1501,8 +1610,6 @@
             });
 
 
-        /* Game hover borders */
-
         document
             .querySelectorAll(".game")
             .forEach(function(game) {
@@ -1526,8 +1633,6 @@
             });
 
 
-        /* Selector ring */
-
         document
             .querySelectorAll(".theme-sphere")
             .forEach(function(sphere) {
@@ -1543,7 +1648,51 @@
 
 
     /* =========================================================
+       SHOW MORE / SHOW LESS
+    ========================================================= */
+
+    let gamesExpanded = false;
+
+
+    function toggleGames() {
+
+        const games =
+            document.querySelectorAll(".game");
+
+        const button =
+            document.getElementById("showMoreButton");
+
+        gamesExpanded =
+            !gamesExpanded;
+
+
+        games.forEach(function(game, index) {
+
+            if (index >= 8) {
+
+                game.style.display =
+                    gamesExpanded
+                        ? ""
+                        : "none";
+
+            }
+
+        });
+
+
+        button.textContent =
+            gamesExpanded
+                ? "Show Less"
+                : "Show More";
+
+    }
+
+
+    /* =========================================================
        SEARCH
+       
+       Search ignores the 8-game limit.
+       Matching hidden games are automatically shown.
     ========================================================= */
 
     function searchGames() {
@@ -1560,27 +1709,98 @@
             document.querySelectorAll(".game");
 
 
-        games.forEach(function(game) {
+        const showMoreButton =
+            document.getElementById("showMoreButton");
+
+
+        games.forEach(function(game, index) {
 
             const text =
                 game.innerText
                     .toLowerCase();
 
 
-            if (text.includes(search)) {
+            const matches =
+                text.includes(search);
 
-                game.style.display = "";
+
+            if (search === "") {
+
+                /* No search:
+                   return to normal 8-game limit */
+
+                if (index < 8) {
+
+                    game.style.display = "";
+
+                }
+                else {
+
+                    game.style.display =
+                        gamesExpanded
+                            ? ""
+                            : "none";
+
+                }
 
             }
             else {
 
-                game.style.display = "none";
+                /* Searching:
+                   show every matching game,
+                   even if it is past game #8 */
+
+                game.style.display =
+                    matches
+                        ? ""
+                        : "none";
 
             }
 
         });
 
+
+        if (search !== "") {
+
+            showMoreButton.style.display =
+                "none";
+
+        }
+        else {
+
+            showMoreButton.style.display =
+                "flex";
+
+        }
+
     }
+
+
+    /* =========================================================
+       INITIAL GAME VISIBILITY
+    ========================================================= */
+
+    document.addEventListener(
+        "DOMContentLoaded",
+        function() {
+
+            const games =
+                document.querySelectorAll(".game");
+
+
+            games.forEach(function(game, index) {
+
+                if (index >= 8) {
+
+                    game.style.display =
+                        "none";
+
+                }
+
+            });
+
+        }
+    );
 
 
     /* =========================================================
@@ -1606,6 +1826,7 @@
             );
 
             return;
+
         }
 
 
@@ -1839,6 +2060,7 @@
             }
 
             return;
+
         }
 
 
